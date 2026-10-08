@@ -1,8 +1,9 @@
 package com.botajudante;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -37,5 +38,7 @@ public class BotAjudante implements ModInitializer {
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "helper_spawn_egg"), HELPER_SPAWN_EGG);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS)
                 .register(entries -> entries.add(HELPER_SPAWN_EGG));
+
+        ServerMessageEvents.CHAT_MESSAGE.register(BotChat::onChat);
     }
 }
