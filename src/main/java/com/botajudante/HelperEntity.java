@@ -25,6 +25,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
 
 public class HelperEntity extends TameableEntity {
@@ -100,5 +101,10 @@ public class HelperEntity extends TameableEntity {
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return null;
+    }
+
+    @Override
+    public EntityView method_48926() {
+        return this.getWorld();
     }
 }
